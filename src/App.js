@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+// app.js
+ import React, { useState } from 'react';
+import Homepage from './homepage';
+import About from './about';
+import './index.css'; 
 
 function App() {
+  // State to track current page
+  const [currentPage, setCurrentPage] = useState('home');
+  
+  // Function to navigate between pages
+  const navigateTo = (page) => {
+    setCurrentPage(page);
+    // Scroll to top when changing pages
+    window.scrollTo(0, 0);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {currentPage === 'home' ? (
+        <Homepage navigateTo={navigateTo} />
+      ) : (
+        <About navigateTo={navigateTo} />
+      )}
     </div>
   );
 }

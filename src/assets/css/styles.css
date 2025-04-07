@@ -1,0 +1,84 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #e0f7fa;
+    color: #333;
+    overflow-x: hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+  }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  header {
+    background-color: #00796b;
+    padding: 20px;
+    color: white;
+    text-align: center;
+  }
+  
+  footer {
+    background-color: #004d40;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  .loading-animation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #e0f7fa;
+  }
+  
+  .water-animation {
+    animation: wave 1.5s infinite;
+  }
+  
+  @keyframes wave {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  .hero-section {
+    background: linear-gradient(to bottom, #00796b, #004d40);
+    color: white;
+    padding: 50px 20px;
+    text-align: center;
+  }
+  
+  .feature-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    padding: 20px;
+    transition: transform 0.3s;
+  }
+  
+  .feature-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .petition-form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }

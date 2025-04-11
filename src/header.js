@@ -4,6 +4,12 @@ import './Homepage.css';
 function Header(props) {
   return (
     <nav className="navbar">
+      <div className="navbar-water-drops">
+        <div className="navbar-drop"></div>
+        <div className="navbar-drop"></div>
+        <div className="navbar-drop"></div>
+      </div>
+      
       <div className="logo">
         <div className="water-drop"></div>
         <h1>LinIlog<span>Movement</span></h1>
@@ -38,14 +44,17 @@ function Header(props) {
         </li>
         <li>
           <a 
-            href="#join" 
+            href="#" 
             onClick={(e) => {
-              if (props.currentPage !== 'home') {
-                e.preventDefault();
+              e.preventDefault();
+              // Always force a complete remount for the signup page
+              if (props.currentPage === 'signup') {
                 props.navigateTo('home');
                 setTimeout(() => {
-                  document.getElementById('join').scrollIntoView({ behavior: 'smooth' });
-                }, 100);
+                  props.navigateTo('signup');
+                }, 50); // Slightly longer delay to ensure complete unmount
+              } else {
+                props.navigateTo('signup');
               }
             }}
             className="cta-button"

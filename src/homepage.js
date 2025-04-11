@@ -103,7 +103,7 @@ function Homepage(props) {
             Join our mission to restore river health through cleanup operations, 
             public awareness, and community partnerships.
           </p>
-          <a href="#join" className="cta-button pulse">Join The Movement</a>
+          <a href="#join" className="cta-button slide-up delay-3 pulse">Join The Movement</a>
         </div>
         <div className="floating-elements">
           <div className="floating-leaf leaf-1"></div>
@@ -220,45 +220,6 @@ function Homepage(props) {
           <div className="stat-card">
             <div className="stat-number counter">5</div>
             <p>Local Communities Impacted</p>
-          </div>
-        </div>
-      </section>
-
-      {/* Join Us Section */}
-      <section id="join" className={`join-us ${isVisible.join ? 'visible' : ''}`}>
-        <h2>Join the Movement</h2>
-        <div className="divider"><div className="water-drop"></div></div>
-        <div className="join-container">
-          <div className="join-text">
-            <p>
-              Be part of the solution! Join the LinIlog Movement today and help us create 
-              cleaner, healthier rivers for future generations. Whether you want to volunteer 
-              for cleanup events, donate to support our work, or spread awareness in your community, 
-              there's a place for you in our movement.
-            </p>
-          </div>
-          <div className="signup-form">
-            <h3>Sign Up Now</h3>
-            <form>
-              <div className="form-group">
-                <input type="text" id="name" placeholder="Your Name" required />
-                <label htmlFor="name">Name</label>
-              </div>
-              <div className="form-group">
-                <input type="email" id="email" placeholder="Your Email" required />
-                <label htmlFor="email">Email</label>
-              </div>
-              <div className="form-group">
-                <select id="interest" required>
-                  <option value="">I'm interested in...</option>
-                  <option value="volunteer">Volunteering</option>
-                  <option value="donate">Donating</option>
-                  <option value="partner">Partnership Opportunities</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-              <button type="submit" className="submit-button">Join Now</button>
-            </form>
           </div>
         </div>
       </section>

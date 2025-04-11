@@ -89,13 +89,12 @@ function Signup(props) {
 
   return (
     <div className="signup-page">
-      {/* Remove the header-container div since the navbar is already sticky */}
       <Header navigateTo={props.navigateTo} currentPage="signup" />
       
       <div className="signup-page-content">
         <div className="signup-content-wrapper">
           {/* Hero Section */}
-          <section className="about-hero hero">
+          <section className="signup-hero hero">
             <div className="water-drops">
               <div className="drop"></div>
               <div className="drop"></div>
@@ -119,7 +118,37 @@ function Signup(props) {
                   involvement matters.
                 </p>
               </div>
+              
+              {/* Benefits section moved BEFORE the form */}
+              <div className="signup-benefits fade-in">
+                <h3>How Your Participation Makes a Difference</h3>
+                <div className="divider"><div className="water-drop"></div></div>
+                <ul className="benefits-row">
+                  <li>
+                    <div className="benefit-icon volunteer-icon"></div>
+                    <div className="benefit-text">
+                      <h4>Volunteer Impact</h4>
+                      <p>Our volunteers have collectively removed over 5 tons of waste from local rivers and helped restore natural habitats.</p>
+                    </div>
+                  </li>
+                  <li>
+                    <div className="benefit-icon education-icon"></div>
+                    <div className="benefit-text">
+                      <h4>Community Education</h4>
+                      <p>Through educational programs, we've reached thousands of people and raised awareness about water conservation.</p>
+                    </div>
+                  </li>
+                  <li>
+                    <div className="benefit-icon partnership-icon"></div>
+                    <div className="benefit-text">
+                      <h4>Corporate Partnerships</h4>
+                      <p>Partner with us to enhance your company's environmental initiatives and make a lasting impact on our natural resources.</p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
 
+              {/* Form section moved AFTER the benefits */}
               <div className="enhanced-signup-form fade-in">
                 <form onSubmit={handleSubmit}>
                   <h3>Sign Up Now</h3>
@@ -188,34 +217,6 @@ function Signup(props) {
                   
                   <button type="submit" className="submit-button">Join The Movement</button>
                 </form>
-              </div>
-              
-              <div className="signup-benefits fade-in">
-                <h3>How Your Participation Makes a Difference</h3>
-                <div className="divider"><div className="water-drop"></div></div>
-                <ul>
-                  <li>
-                    <div className="volunteer-icon"></div>
-                    <div className="benefit-text">
-                      <h4>Volunteer Impact</h4>
-                      <p>Our volunteers have collectively removed over 5 tons of waste from local rivers and helped restore natural habitats.</p>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="benefit-icon education-icon"></div>
-                    <div className="benefit-text">
-                      <h4>Community Education</h4>
-                      <p>Through educational programs, we've reached thousands of people and raised awareness about water conservation.</p>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="benefit-icon partner-icon"></div>
-                    <div className="benefit-text">
-                      <h4>Corporate Partnerships</h4>
-                      <p>Partner with us to enhance your company's environmental initiatives and make a lasting impact on our natural resources.</p>
-                    </div>
-                  </li>
-                </ul>
               </div>
             </div>
           </section>

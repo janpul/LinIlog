@@ -12,16 +12,12 @@ function Signup(props) {
   });
 
   useEffect(() => {
-    // Make the header visible immediately (no animation)
-    const headerContainer = document.querySelector('.header-container');
-    if (headerContainer) {
-      headerContainer.style.opacity = '1';
-      headerContainer.style.transform = 'translateY(0)';
-    }
+    // Reset scroll position when component mounts
+    window.scrollTo(0, 0);
     
-    // First, add the visible class to the main containers, but NOT the header
+    // Give the DOM time to render
     setTimeout(() => {
-      // Make sure all containers get the visible class
+      // Make all content sections visible
       const signupContent = document.querySelector('.signup-content-wrapper');
       if (signupContent) {
         signupContent.classList.add('visible');
@@ -35,6 +31,11 @@ function Signup(props) {
       const formSection = document.querySelector('.signup-form-section');
       if (formSection) {
         formSection.classList.add('visible');
+      }
+      
+      const benefits = document.querySelector('.signup-benefits');
+      if (benefits) {
+        benefits.classList.add('visible');
       }
     }, 100);
     
@@ -53,6 +54,11 @@ function Signup(props) {
       const formSection = document.querySelector('.signup-form-section');
       if (formSection) {
         formSection.classList.remove('visible');
+      }
+      
+      const benefits = document.querySelector('.signup-benefits');
+      if (benefits) {
+        benefits.classList.remove('visible');
       }
     };
   }, []);
@@ -83,14 +89,13 @@ function Signup(props) {
 
   return (
     <div className="signup-page">
-      <div className="header-container">
-        <Header navigateTo={props.navigateTo} currentPage="signup" />
-      </div>
+      {/* Remove the header-container div since the navbar is already sticky */}
+      <Header navigateTo={props.navigateTo} currentPage="signup" />
       
       <div className="signup-page-content">
         <div className="signup-content-wrapper">
           {/* Hero Section */}
-            <section className="about-hero hero">
+          <section className="about-hero hero">
             <div className="water-drops">
               <div className="drop"></div>
               <div className="drop"></div>
@@ -115,7 +120,6 @@ function Signup(props) {
                 </p>
               </div>
 
-              {/* Enhanced signup form comes first for better flow */}
               <div className="enhanced-signup-form fade-in">
                 <form onSubmit={handleSubmit}>
                   <h3>Sign Up Now</h3>
@@ -186,7 +190,6 @@ function Signup(props) {
                 </form>
               </div>
               
-              {/* Benefits section moved below the form */}
               <div className="signup-benefits fade-in">
                 <h3>How Your Participation Makes a Difference</h3>
                 <div className="divider"><div className="water-drop"></div></div>

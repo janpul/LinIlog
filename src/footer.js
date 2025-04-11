@@ -1,5 +1,7 @@
 import React from 'react';
 import './Homepage.css';
+import { Link } from 'react-router-dom';
+
 
 function Footer(props) {
   return (
@@ -14,32 +16,9 @@ function Footer(props) {
           <div className="footer-section">
             <h4>Quick Links</h4>
             <ul>
-              <li>
-                <a 
-                  href="#home"
-                  onClick={(e) => {
-                    if (props.currentPage !== 'home') {
-                      e.preventDefault();
-                      props.navigateTo('home');
-                    }
-                  }}
-                >
-                  Home
-                </a>
-              </li>
-              <li>
-                <a 
-                  href="#"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    props.navigateTo('about');
-                  }}
-                >
-                  About Us
-                </a>
-              </li>
-              <li><a href="#initiatives">Initiatives</a></li>
-              <li><a href="#impact">Impact</a></li>
+              <li><a><Link to="/">Home</Link></a></li>
+              <li><a><Link to="/about"> About Us</Link></a></li>
+              <li><a><Link to="/signup">Join us</Link></a></li>
             </ul>
           </div>
           <div className="footer-section">

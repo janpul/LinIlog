@@ -1,9 +1,46 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Homepage.css';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Header(props) {
+  const [scrolled, setScrolled] = useState(false);
+  const navigate = useNavigate();
+  
+  // Add scroll event listener
+  useEffect(() => {
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 50;
+      if (isScrolled !== scrolled) {
+        setScrolled(isScrolled);
+      }
+    };
+    
+    document.addEventListener('scroll', handleScroll);
+    
+    // Clean up event listener
+    return () => {
+      document.removeEventListener('scroll', handleScroll);
+    };
+  }, [scrolled]);
+  
+  // Custom navigation handler that scrolls to top
+  const handleNavigation = (path, e) => {
+    e.preventDefault();
+    
+    // First scroll to top
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+    
+    // Then navigate after a short delay to ensure smooth scroll completes
+    setTimeout(() => {
+      navigate(path);
+    }, 300);
+  };
+  
   return (
-    <nav className="navbar">
+    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="navbar-water-drops">
         <div className="navbar-drop"></div>
         <div className="navbar-drop"></div>
@@ -18,46 +55,27 @@ function Header(props) {
       <ul className="nav-links">
         <li>
           <a 
-            href="#home" 
-            onClick={(e) => {
-              if (props.currentPage !== 'home') {
-                e.preventDefault();
-                props.navigateTo('home');
-              }
-            }}
+            href="/" 
             className={props.currentPage === 'home' ? 'active' : ''}
+            onClick={(e) => handleNavigation('/', e)}
           >
             Home
           </a>
         </li>
         <li>
           <a 
-            href="#" 
-            onClick={(e) => {
-              e.preventDefault();
-              props.navigateTo('about');
-            }}
+            href="/about" 
             className={props.currentPage === 'about' ? 'active' : ''}
+            onClick={(e) => handleNavigation('/about', e)}
           >
             About
           </a>
         </li>
         <li>
           <a 
-            href="#" 
-            onClick={(e) => {
-              e.preventDefault();
-              // Always force a complete remount for the signup page
-              if (props.currentPage === 'signup') {
-                props.navigateTo('home');
-                setTimeout(() => {
-                  props.navigateTo('signup');
-                }, 50); // Slightly longer delay to ensure complete unmount
-              } else {
-                props.navigateTo('signup');
-              }
-            }}
-            className="cta-button"
+            href="/signup" 
+            className="cta-button no-underline"
+            onClick={(e) => handleNavigation('/signup', e)}
           >
             Join Us
           </a>

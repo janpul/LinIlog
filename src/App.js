@@ -1,7 +1,8 @@
 // app.js
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Homepage from './homepage';
-import About from './about'; // This will now work with the default export
+import About from './about';
 import Signup from './signup';
 import './App.css';
 
@@ -15,9 +16,13 @@ function App() {
   
   return (
     <div className="App">
-      {currentPage === 'home' && <Homepage navigateTo={navigateTo} />}
-      {currentPage === 'about' && <About navigateTo={navigateTo} />}
-      {currentPage === 'signup' && <Signup navigateTo={navigateTo} />}
+      <Router>
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/signup" element={<Signup />} />
+        </Routes>
+      </Router>
     </div>
   );
 }

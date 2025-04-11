@@ -26,18 +26,71 @@ function Homepage(props) {
       });
     };
 
-    // Initialize state with home visible
     setIsVisible(prev => ({ ...prev, home: true }));
-
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Check initial positions
+    handleScroll();
     
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    const animateCounters = () => {
+      const counters = document.querySelectorAll('.counter');
+      
+      counters.forEach(counter => {
+        // Get the target number from the text content
+        const target = parseInt(counter.textContent.replace(/[^\d]/g, ''), 10);
+        const duration = 2000; // Animation duration in milliseconds
+        const steps = 60; // Number of steps to reach target
+        const stepTime = duration / steps;
+        let current = 0;
+        
+        // Reset content to start from 0
+        counter.textContent = current + (counter.textContent.includes('+') ? '+' : '');
+        
+        const updateCounter = () => {
+          // Calculate new value based on easing function
+          const increment = Math.ceil(target / steps);
+          current = Math.min(current + increment, target);
+          
+          // Update the counter text
+          counter.textContent = current + (counter.textContent.includes('+') ? '+' : '');
+          
+          // Continue animation until target is reached
+          if (current < target) {
+            setTimeout(updateCounter, stepTime);
+          }
+        };
+        
+        updateCounter();
+      });
+    };
+    
+    // Use Intersection Observer to start animation when stats are visible
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounters();
+          observer.disconnect(); // Run animation only once
+        }
+      });
+    }, { threshold: 0.3 });
+    
+    const statsSection = document.querySelector('.impact-stats');
+    if (statsSection) {
+      observer.observe(statsSection);
+    }
+    
+    return () => {
+      if (observer) {
+        observer.disconnect();
+      }
+    };
+  }, []);
+
   return (
     <div className="homepage">
-      {/* Navigation */}
+      {/* Use the Header component instead of inline navbar */}
       <Header navigateTo={props.navigateTo} currentPage="home" />
 
       {/* Hero Section */}
@@ -74,7 +127,19 @@ function Homepage(props) {
             </p>
           </div>
           <div className="about-image">
-            <div className="ripple-effect"></div>
+            <div className="ripple-effect">
+              <div className="image-container">
+                <img 
+                  src="./SanJuanRiver.jpg" 
+                  alt="River cleanup volunteers" 
+                  className="about-featured-image"
+                  onError={(e) => {
+                    // If image fails to load, hide it but keep the ripple effect
+                    e.target.style.display = 'none';
+                  }}
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -198,7 +263,7 @@ function Homepage(props) {
         </div>
       </section>
 
-      {/* Footer */}
+      {/* Use the Footer component instead of inline footer */}
       <Footer navigateTo={props.navigateTo} />
     </div>
   );

@@ -118,16 +118,19 @@ function About(props) {
 
   return (
     <div className="about-page">
-      {/* Header - outside the animated content wrapper */}
       <div className="header-container">
         <Header navigateTo={props.navigateTo} currentPage="about" />
       </div>
-
-      {/* Main content with animation - wrapped in a separate div */}
+      
       <div className="about-page-content">
         <div className="about-content-wrapper">
           {/* Hero Section - styled like the homepage hero */}
           <section className="about-hero hero">
+            <div className="water-drops">
+              <div className="drop"></div>
+              <div className="drop"></div>
+              <div className="drop"></div>
+            </div>
             <div className="hero-content">
               <h1 className="fade-in">Meet Our Developers</h1>
               <p className="slide-up delay-1">The talented team behind the LinIlog Movement website</p>
@@ -215,7 +218,7 @@ function About(props) {
         </div>
       </div>
 
-      {/* Footer */}
+      {/* Add Footer component here */}
       <Footer navigateTo={props.navigateTo} />
     </div>
   );

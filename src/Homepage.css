@@ -75,7 +75,7 @@ section.visible {
   }
   50% {
     transform: rotate(45deg) scale(1.1);
-    box-shadow: 0 0 15px rgba(14, 165, 233, 0.7);
+    box-shadow:   0 0 15px rgba(14, 165, 233, 0.7);
   }
   100% {
     transform: rotate(45deg) scale(1);

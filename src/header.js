@@ -73,6 +73,15 @@ function Header(props) {
         </li>
         <li>
           <a 
+            href="/admin/login" 
+            className={props.currentPage === 'admin' ? 'active' : ''}
+            onClick={(e) => handleNavigation('/admin/login', e)}
+          >
+            Admin
+          </a>
+        </li>
+        <li>
+          <a 
             href="/signup" 
             className="cta-button no-underline"
             onClick={(e) => handleNavigation('/signup', e)}

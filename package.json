@@ -1,5 +1,5 @@
 {
-  "name": "linilog",
+  "name": "LinIlog",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -24,7 +24,13 @@
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
+    ],
+    "settings": {
+      "react": {
+        "version": "detect"
+      }
+    },
+    "rules": {}
   },
   "browserslist": {
     "production": [

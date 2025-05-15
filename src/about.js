@@ -142,29 +142,6 @@ function About(props) {
             <h2>Our Team</h2>
             <div className="divider"><div className="water-drop"></div></div>
             <div className="team-container about-content">
-              {/* Developer 1 */}
-              <div className="team-member">
-                <div className="member-image placeholder-image">
-                  <img 
-                    src="./dev1.jpg" 
-                    alt="Lead Developer" 
-                    style={{width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%'}}
-                    onError={(e) => {
-                      e.target.style.display = 'none';
-                      e.target.parentNode.classList.add('placeholder-image');
-                      const ripple = document.createElement('div');
-                      ripple.className = 'ripple-effect-small';
-                      e.target.parentNode.appendChild(ripple);
-                    }}
-                  />
-                </div>
-                <h3>Lead Developer</h3>
-                <p className="member-title">Frontend & UX Specialist</p>
-                <p className="member-bio">
-                  Responsible for creating the user interface and ensuring a seamless user experience.
-                  Specializes in responsive design and interactive elements.
-                </p>
-              </div>
 
               {/* Developer 2 */}
               <div className="team-member">
@@ -182,7 +159,7 @@ function About(props) {
                     }}
                   />
                 </div>
-                <h3>Backend Developer</h3>
+                <h3>Jason Wendell Agilada</h3>
                 <p className="member-title">System Architecture Expert</p>
                 <p className="member-bio">
                   Handles server-side logic, database management, and API integration.
@@ -206,11 +183,35 @@ function About(props) {
                     }}
                   />
                 </div>
-                <h3>UI/UX Designer</h3>
+                <h3>Jan Adrian Sideño</h3>
                 <p className="member-title">Creative Director</p>
                 <p className="member-bio">
                   Designs intuitive and visually appealing interfaces for the website.
                   Passionate about creating engaging digital experiences that inspire action.
+                </p>
+              </div>
+
+              {/* Developer 1 */}
+              <div className="team-member">
+                <div className="member-image placeholder-image">
+                  <img 
+                    src="./dev1.jpg" 
+                    alt="Lead Developer" 
+                    style={{width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%'}}
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                      e.target.parentNode.classList.add('placeholder-image');
+                      const ripple = document.createElement('div');
+                      ripple.className = 'ripple-effect-small';
+                      e.target.parentNode.appendChild(ripple);
+                    }}
+                  />
+                </div>
+                <h3>John Paul Taruc</h3>
+                <p className="member-title">Frontend & UX Specialist</p>
+                <p className="member-bio">
+                  Responsible for creating the user interface and ensuring a seamless user experience.
+                  Specializes in responsive design and interactive elements.
                 </p>
               </div>
             </div>

@@ -10,18 +10,18 @@ function Signup(props) {
     interest: '',
     message: ''
   });
+  const [loading, setLoading] = useState(false);
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [error, setError] = useState(null);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   useEffect(() => {
-    // Make the header visible immediately (no animation)
-    const headerContainer = document.querySelector('.header-container');
-    if (headerContainer) {
-      headerContainer.style.opacity = '1';
-      headerContainer.style.transform = 'translateY(0)';
-    }
+    // Reset scroll position when component mounts
+    window.scrollTo(0, 0);
     
-    // First, add the visible class to the main containers, but NOT the header
+    // Give the DOM time to render
     setTimeout(() => {
-      // Make sure all containers get the visible class
+      // Make all content sections visible
       const signupContent = document.querySelector('.signup-content-wrapper');
       if (signupContent) {
         signupContent.classList.add('visible');
@@ -35,6 +35,11 @@ function Signup(props) {
       const formSection = document.querySelector('.signup-form-section');
       if (formSection) {
         formSection.classList.add('visible');
+      }
+      
+      const benefits = document.querySelector('.signup-benefits');
+      if (benefits) {
+        benefits.classList.add('visible');
       }
     }, 100);
     
@@ -54,6 +59,11 @@ function Signup(props) {
       if (formSection) {
         formSection.classList.remove('visible');
       }
+      
+      const benefits = document.querySelector('.signup-benefits');
+      if (benefits) {
+        benefits.classList.remove('visible');
+      }
     };
   }, []);
 
@@ -65,32 +75,76 @@ function Signup(props) {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    setLoading(true);
+    setError(null);
     
-    // Show success message
-    alert('Thank you for joining the LinIlog Movement! We will be in touch soon.');
-    
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      interest: '',
-      message: ''
-    });
+    try {
+      const response = await fetch('http://localhost:5000/api/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      });
+      
+      const data = await response.json();
+      
+      if (response.ok) {
+        setFormSubmitted(true);
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          interest: '',
+          message: ''
+        });
+        
+        // Show success modal instead of alert
+        setShowSuccessModal(true);
+      } else {
+        setError(data.message || 'Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setError('Network error. Please check your connection and try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Close the success modal
+  const closeSuccessModal = () => {
+    setShowSuccessModal(false);
   };
 
   return (
     <div className="signup-page">
-      <div className="header-container">
-        <Header navigateTo={props.navigateTo} currentPage="signup" />
-      </div>
+      <Header navigateTo={props.navigateTo} currentPage="signup" />
+      
+      {/* Success Modal */}
+      {showSuccessModal && (
+        <div className="success-modal-overlay">
+          <div className="success-modal">
+            <div className="success-modal-content">
+              <div className="success-icon">
+                <div className="water-drop"></div>
+              </div>
+              <h3>Thank You!</h3>
+              <p>Thank you for joining the LinIlog Movement! We will be in touch soon.</p>
+              <button className="submit-button" onClick={closeSuccessModal}>
+                Continue
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
       
       <div className="signup-page-content">
         <div className="signup-content-wrapper">
           {/* Hero Section */}
-            <section className="about-hero hero">
+          <section className="signup-hero hero">
             <div className="water-drops">
               <div className="drop"></div>
               <div className="drop"></div>
@@ -114,85 +168,14 @@ function Signup(props) {
                   involvement matters.
                 </p>
               </div>
-
-              {/* Enhanced signup form comes first for better flow */}
-              <div className="enhanced-signup-form fade-in">
-                <form onSubmit={handleSubmit}>
-                  <h3>Sign Up Now</h3>
-                  <div className="divider"><div className="water-drop"></div></div>
-                  
-                  <div className="form-grid">
-                    <div className="form-group">
-                      <input 
-                        type="text" 
-                        id="name" 
-                        placeholder="Your Name" 
-                        value={formData.name}
-                        onChange={handleChange}
-                        required 
-                      />
-                      <label htmlFor="name">Name</label>
-                    </div>
-                    
-                    <div className="form-group">
-                      <input 
-                        type="email" 
-                        id="email" 
-                        placeholder="Your Email" 
-                        value={formData.email}
-                        onChange={handleChange}
-                        required 
-                      />
-                      <label htmlFor="email">Email</label>
-                    </div>
-                    
-                    <div className="form-group">
-                      <select 
-                        id="interest" 
-                        value={formData.interest}
-                        onChange={handleChange}
-                        required
-                      >
-                        <option value="">I'm interested in...</option>
-                        <option value="volunteer">Volunteering for Cleanup Events</option>
-                        <option value="donate">Making a Donation</option>
-                        <option value="education">Educational Programs</option>
-                        <option value="partner">Corporate Partnership</option>
-                        <option value="other">Other</option>
-                      </select>
-                      <label htmlFor="interest">Area of Interest</label>
-                    </div>
-                    
-                    <div className="form-group full-width">
-                      <textarea 
-                        id="message" 
-                        placeholder="Your Message (Optional)" 
-                        value={formData.message}
-                        onChange={handleChange}
-                        rows="4"
-                      ></textarea>
-                      <label htmlFor="message">Message</label>
-                    </div>
-                  </div>
-                  
-                  <div className="form-terms">
-                    <input type="checkbox" id="terms" required />
-                    <label htmlFor="terms">
-                      I agree to receive updates from the LinIlog Movement about events, volunteer opportunities, and environmental initiatives.
-                    </label>
-                  </div>
-                  
-                  <button type="submit" className="submit-button">Join The Movement</button>
-                </form>
-              </div>
               
-              {/* Benefits section moved below the form */}
+              {/* Benefits section moved BEFORE the form */}
               <div className="signup-benefits fade-in">
                 <h3>How Your Participation Makes a Difference</h3>
                 <div className="divider"><div className="water-drop"></div></div>
-                <ul>
+                <ul className="benefits-row">
                   <li>
-                    <div className="volunteer-icon"></div>
+                    <div className="benefit-icon volunteer-icon"></div>
                     <div className="benefit-text">
                       <h4>Volunteer Impact</h4>
                       <p>Our volunteers have collectively removed over 5 tons of waste from local rivers and helped restore natural habitats.</p>
@@ -206,13 +189,113 @@ function Signup(props) {
                     </div>
                   </li>
                   <li>
-                    <div className="benefit-icon partner-icon"></div>
+                    <div className="benefit-icon partnership-icon"></div>
                     <div className="benefit-text">
                       <h4>Corporate Partnerships</h4>
                       <p>Partner with us to enhance your company's environmental initiatives and make a lasting impact on our natural resources.</p>
                     </div>
                   </li>
                 </ul>
+              </div>
+
+              {/* Form section moved AFTER the benefits */}
+              <div className="enhanced-signup-form fade-in">
+                {error && (
+                  <div className="error-message">
+                    <p>{error}</p>
+                  </div>
+                )}
+                
+                {formSubmitted ? (
+                  <div className="success-message">
+                    <h3>Thank You!</h3>
+                    <p>Your form has been submitted successfully. We'll be in touch soon!</p>
+                    <button 
+                      className="submit-button" 
+                      onClick={() => setFormSubmitted(false)}
+                    >
+                      Submit Another Form
+                    </button>
+                  </div>
+                ) : (
+                  <form onSubmit={handleSubmit}>
+                    <h3>Sign Up Now</h3>
+                    <div className="divider"><div className="water-drop"></div></div>
+                    
+                    <div className="form-grid">
+                      <div className="form-group">
+                        <input 
+                          type="text" 
+                          id="name" 
+                          placeholder="Your Name" 
+                          value={formData.name}
+                          onChange={handleChange}
+                          required 
+                          disabled={loading}
+                        />
+                        <label htmlFor="name">Name</label>
+                      </div>
+                      
+                      <div className="form-group">
+                        <input 
+                          type="email" 
+                          id="email" 
+                          placeholder="Your Email" 
+                          value={formData.email}
+                          onChange={handleChange}
+                          required 
+                          disabled={loading}
+                        />
+                        <label htmlFor="email">Email</label>
+                      </div>
+                      
+                      <div className="form-group">
+                        <select 
+                          id="interest" 
+                          value={formData.interest}
+                          onChange={handleChange}
+                          required
+                          disabled={loading}
+                        >
+                          <option value="">I'm interested in...</option>
+                          <option value="volunteer">Volunteering for Cleanup Events</option>
+                          <option value="donate">Making a Donation</option>
+                          <option value="education">Educational Programs</option>
+                          <option value="partner">Corporate Partnership</option>
+                          <option value="other">Other</option>
+                        </select>
+                        <label htmlFor="interest">Area of Interest</label>
+                      </div>
+                      
+                      <div className="form-group full-width">
+                        <textarea 
+                          id="message" 
+                          placeholder="Your Message (Optional)" 
+                          value={formData.message}
+                          onChange={handleChange}
+                          rows="4"
+                          disabled={loading}
+                        ></textarea>
+                        <label htmlFor="message">Message</label>
+                      </div>
+                    </div>
+                    
+                    <div className="form-terms">
+                      <input type="checkbox" id="terms" required disabled={loading} />
+                      <label htmlFor="terms">
+                        I agree to receive updates from the LinIlog Movement about events, volunteer opportunities, and environmental initiatives.
+                      </label>
+                    </div>
+                    
+                    <button 
+                      type="submit" 
+                      className="submit-button"
+                      disabled={loading}
+                    >
+                      {loading ? 'Submitting...' : 'Join The Movement'}
+                    </button>
+                  </form>
+                )}
               </div>
             </div>
           </section>

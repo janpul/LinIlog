@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from './header';
 import './Homepage.css';
+import API_URL from './config';
 
 function AdminLogin() {
   const [credentials, setCredentials] = useState({
@@ -12,6 +13,15 @@ function AdminLogin() {
   const [error, setError] = useState(null);
   
   const navigate = useNavigate();
+  
+  // Check if user is already logged in
+  useEffect(() => {
+    const adminToken = localStorage.getItem('adminToken');
+    if (adminToken) {
+      // User already has a token, redirect to dashboard
+      navigate('/admin/dashboard');
+    }
+  }, [navigate]);
   
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -25,9 +35,8 @@ function AdminLogin() {
     e.preventDefault();
     setLoading(true);
     setError(null);
-    
-    try {
-      const response = await fetch('http://localhost:5000/api/admin/login', {
+      try {
+      const response = await fetch(`${API_URL}/api/admin/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -36,8 +45,7 @@ function AdminLogin() {
       });
       
       const data = await response.json();
-      
-      if (response.ok) {
+        if (response.ok) {
         // Store token in localStorage
         localStorage.setItem('adminToken', data.token);
         // Redirect to admin dashboard

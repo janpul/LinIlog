@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from './header';
 import './Homepage.css';
+import API_URL from './config';
 
 function AdminDashboard() {
   const [submissions, setSubmissions] = useState([]);
@@ -21,13 +22,19 @@ function AdminDashboard() {
     // Fetch submissions
     fetchSubmissions();
   }, [navigate]);
-  
-  const fetchSubmissions = async () => {
+    const fetchSubmissions = async () => {
     try {
-      const token = localStorage.getItem('adminToken');
+      const token = localStorage.getItem('adminToken');      
+      if (!token) {
+        setError('No authentication token found. Please log in again.');
+        navigate('/admin/login');
+        return;
+      }
       
-      const response = await fetch('http://localhost:5000/api/admin/submissions', {
+      const response = await fetch(`${API_URL}/api/admin/submissions`, {
+        method: 'GET',
         headers: {
+          'Content-Type': 'application/json',
           'x-auth-token': token
         }
       });

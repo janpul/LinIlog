@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from './header';
 import './Homepage.css';
+import API_URL from './config';
 
 function AdminRegister() {
   const [formData, setFormData] = useState({
@@ -13,6 +14,15 @@ function AdminRegister() {
   const [error, setError] = useState(null);
   
   const navigate = useNavigate();
+  
+  // Check if user is already logged in
+  useEffect(() => {
+    const adminToken = localStorage.getItem('adminToken');
+    if (adminToken) {
+      // User already has a token, redirect to dashboard
+      navigate('/admin/dashboard');
+    }
+  }, [navigate]);
   
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -33,9 +43,8 @@ function AdminRegister() {
       setLoading(false);
       return;
     }
-    
-    try {
-      const response = await fetch('http://localhost:5000/api/admin/register', {
+      try {
+      const response = await fetch(`${API_URL}/api/admin/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

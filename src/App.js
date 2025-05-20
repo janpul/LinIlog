@@ -7,6 +7,7 @@ import Signup from './signup';
 import AdminLogin from './AdminLogin';
 import AdminDashboard from './AdminDashboard';
 import AdminRegister from './AdminRegister';
+import NotFound from './NotFound';
 import './App.css';
 
 function App() {
@@ -16,17 +17,18 @@ function App() {
     setCurrentPage(page);
     window.scrollTo(0, 0);
   };
-  
-  return (
+    return (
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/signup" element={<Signup />} />
+          <Route path="/" element={<Homepage navigateTo={navigateTo} />} />
+          <Route path="/about" element={<About navigateTo={navigateTo} />} />
+          <Route path="/signup" element={<Signup navigateTo={navigateTo} />} />
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin/register" element={<AdminRegister />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
+          {/* Catch-all route for 404 Not Found */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
     </div>

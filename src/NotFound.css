@@ -1,0 +1,31 @@
+/* NotFound Page specific styles - to be added to your project's CSS */
+
+.notfound-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Override the hero section styles for the 404 page */
+.notfound-page .hero {
+  background: linear-gradient(145deg, #e0f7fa 0%, #bbdefb 100%);
+}
+
+.notfound-page .hero h1 {
+  font-size: 7rem;
+  color: #0369a1;
+  text-shadow: 2px 2px 10px rgba(3, 105, 161, 0.2);
+  margin-bottom: 1.5rem;
+}
+
+.notfound-page .hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.notfound-page .hero p {
+  max-width: 500px;
+  margin: 0 auto 2rem;
+}
+
+/* Add this to your existing CSS file */

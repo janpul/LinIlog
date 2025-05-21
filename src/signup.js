@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Header from './header';
 import Footer from './footer';
 import './Homepage.css';
+import API_URL from './config';
 
 function Signup(props) {
   const [formData, setFormData] = useState({
@@ -13,7 +14,6 @@ function Signup(props) {
   const [loading, setLoading] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [error, setError] = useState(null);
-  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   useEffect(() => {
     // Reset scroll position when component mounts
@@ -81,7 +81,7 @@ function Signup(props) {
     setError(null);
     
     try {
-      const response = await fetch('http://localhost:5000/api/signup', {
+      const response = await fetch(`${API_URL}/api/signup`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -101,8 +101,8 @@ function Signup(props) {
           message: ''
         });
         
-        // Show success modal instead of alert
-        setShowSuccessModal(true);
+        // Show success message
+        alert('Thank you for joining the LinIlog Movement! We will be in touch soon.');
       } else {
         setError(data.message || 'Something went wrong. Please try again.');
       }
@@ -114,32 +114,9 @@ function Signup(props) {
     }
   };
 
-  // Close the success modal
-  const closeSuccessModal = () => {
-    setShowSuccessModal(false);
-  };
-
   return (
     <div className="signup-page">
       <Header navigateTo={props.navigateTo} currentPage="signup" />
-      
-      {/* Success Modal */}
-      {showSuccessModal && (
-        <div className="success-modal-overlay">
-          <div className="success-modal">
-            <div className="success-modal-content">
-              <div className="success-icon">
-                <div className="water-drop"></div>
-              </div>
-              <h3>Thank You!</h3>
-              <p>Thank you for joining the LinIlog Movement! We will be in touch soon.</p>
-              <button className="submit-button" onClick={closeSuccessModal}>
-                Continue
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
       
       <div className="signup-page-content">
         <div className="signup-content-wrapper">

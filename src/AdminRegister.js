@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Header from './header';
-import './Homepage.css';
+import AdminNavbar from './AdminNavbar';
+import './Admin.css';
+import API_URL from './config';
 
 function AdminRegister() {
   const [formData, setFormData] = useState({
@@ -13,6 +14,15 @@ function AdminRegister() {
   const [error, setError] = useState(null);
   
   const navigate = useNavigate();
+  
+  // Check if user is already logged in
+  useEffect(() => {
+    const adminToken = localStorage.getItem('adminToken');
+    if (adminToken) {
+      // User already has a token, redirect to dashboard
+      navigate('/admin/dashboard');
+    }
+  }, [navigate]);
   
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -33,9 +43,8 @@ function AdminRegister() {
       setLoading(false);
       return;
     }
-    
-    try {
-      const response = await fetch('http://localhost:5000/api/admin/register', {
+      try {
+      const response = await fetch(`${API_URL}/api/admin/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -60,30 +69,27 @@ function AdminRegister() {
     } finally {
       setLoading(false);
     }
-  };
-
-  return (
-    <div className="admin-register-page">
-      <Header currentPage="admin" />
+  };  return (
+    <div className="admin-page">
+      <AdminNavbar />
       
-      <div className="admin-register-content">
-        <div className="admin-register-form-container">
-          <div className="admin-register-form-wrapper">
+      <div className="admin-content">
+        <div className="admin-form-container">
+          <div className="admin-form-wrapper admin-fade-in">
             <h2>Admin Registration</h2>
-            <div className="divider"><div className="water-drop"></div></div>
             
-            <p className="admin-register-notice">
+            <p style={{ marginBottom: "1.5rem", fontSize: "0.9rem", color: "#7f8c8d" }}>
               This page is for creating a new admin account. Use this only if you are authorized to create admin accounts.
             </p>
             
             {error && (
-              <div className="error-message">
+              <div className="admin-error-message">
                 <p>{error}</p>
               </div>
             )}
             
             <form onSubmit={handleSubmit}>
-              <div className="form-group">
+              <div className="admin-form-group">
                 <input 
                   type="text" 
                   id="username" 
@@ -96,7 +102,7 @@ function AdminRegister() {
                 <label htmlFor="username">Username</label>
               </div>
               
-              <div className="form-group">
+              <div className="admin-form-group">
                 <input 
                   type="password" 
                   id="password" 
@@ -109,7 +115,7 @@ function AdminRegister() {
                 <label htmlFor="password">Password</label>
               </div>
               
-              <div className="form-group">
+              <div className="admin-form-group">
                 <input 
                   type="password" 
                   id="confirmPassword" 
@@ -124,15 +130,15 @@ function AdminRegister() {
               
               <button 
                 type="submit" 
-                className="submit-button"
+                className="admin-button"
                 disabled={loading}
               >
                 {loading ? 'Registering...' : 'Register Admin'}
               </button>
               
-              <div className="admin-login-link">
+              <div style={{ marginTop: "1.5rem", textAlign: "center", fontSize: "0.9rem" }}>
                 <p>
-                  Already have an admin account? <a href="/admin/login">Login</a>
+                  Already have an admin account? <a href="/admin/login" style={{ color: "var(--admin-secondary)", textDecoration: "none", fontWeight: "600" }}>Login</a>
                 </p>
               </div>
             </form>

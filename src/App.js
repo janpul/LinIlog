@@ -7,6 +7,7 @@ import Signup from './signup';
 import AdminLogin from './AdminLogin';
 import AdminDashboard from './AdminDashboard';
 import AdminRegister from './AdminRegister';
+import AdminNotFound from './AdminNotFound';
 import NotFound from './NotFound';
 import './App.css';
 
@@ -24,10 +25,11 @@ function App() {
           <Route path="/" element={<Homepage navigateTo={navigateTo} />} />
           <Route path="/about" element={<About navigateTo={navigateTo} />} />
           <Route path="/signup" element={<Signup navigateTo={navigateTo} />} />
+          <Route path="/admin" element={<AdminLogin />} />
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin/register" element={<AdminRegister />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
-          {/* Catch-all route for 404 Not Found */}
+          <Route path="/admin/*" element={<AdminNotFound />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>

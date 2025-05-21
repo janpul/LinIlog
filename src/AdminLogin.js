@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Header from './header';
-import './Homepage.css';
+import AdminNavbar from './AdminNavbar';
+import './Admin.css';
 import API_URL from './config';
 
 function AdminLogin() {
@@ -59,26 +59,23 @@ function AdminLogin() {
     } finally {
       setLoading(false);
     }
-  };
-
-  return (
-    <div className="admin-login-page">
-      <Header currentPage="admin" />
+  };  return (
+    <div className="admin-page">
+      <AdminNavbar />
       
-      <div className="admin-login-content">
-        <div className="admin-login-form-container">
-          <div className="admin-login-form-wrapper">
+      <div className="admin-content">
+        <div className="admin-form-container">
+          <div className="admin-form-wrapper admin-fade-in">
             <h2>Admin Login</h2>
-            <div className="divider"><div className="water-drop"></div></div>
             
             {error && (
-              <div className="error-message">
+              <div className="admin-error-message">
                 <p>{error}</p>
               </div>
             )}
             
             <form onSubmit={handleSubmit}>
-              <div className="form-group">
+              <div className="admin-form-group">
                 <input 
                   type="text" 
                   id="username" 
@@ -91,7 +88,7 @@ function AdminLogin() {
                 <label htmlFor="username">Username</label>
               </div>
               
-              <div className="form-group">
+              <div className="admin-form-group">
                 <input 
                   type="password" 
                   id="password" 
@@ -106,7 +103,7 @@ function AdminLogin() {
               
               <button 
                 type="submit" 
-                className="submit-button"
+                className="admin-button"
                 disabled={loading}
               >
                 {loading ? 'Logging in...' : 'Login'}

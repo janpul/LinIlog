@@ -11,8 +11,14 @@ function Homepage(props) {
     impact: false,
     join: false
   });
+  const [heroLoaded, setHeroLoaded] = useState(false);
 
   useEffect(() => {
+    // Set hero loaded with delay for animation
+    const heroTimer = setTimeout(() => {
+      setHeroLoaded(true);
+    }, 1000);
+    
     const handleScroll = () => {
       const sections = ['home', 'about', 'initiatives', 'impact', 'join'];
       sections.forEach(section => {
@@ -30,7 +36,10 @@ function Homepage(props) {
     window.addEventListener('scroll', handleScroll);
     handleScroll();
     
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      clearTimeout(heroTimer);
+    };
   }, []);
 
   useEffect(() => {
@@ -91,24 +100,53 @@ function Homepage(props) {
   return (
     <div className="homepage">
       {/* Use the Header component instead of inline navbar */}
-      <Header navigateTo={props.navigateTo} currentPage="home" />
-
-      {/* Hero Section */}
+      <Header navigateTo={props.navigateTo} currentPage="home" />      {/* Updated Hero Section - Mobile Responsive */}
       <section id="home" className="hero">
         <div className="water-waves"></div>
-        <div className="hero-content">
-          <h1 className="fade-in">The LinIlog Movement</h1>
-          <h2 className="slide-up delay-1">"Alon ng Pagbabago"</h2>
-          <p className="slide-up delay-2">
-            Join our mission to restore river health through cleanup operations, 
-            public awareness, and community partnerships.
-          </p>
-          <a href="#join" className="cta-button slide-up delay-3 pulse">Join The Movement</a>
+        <div className="hero-particles">
+          <div className="particle"></div>
+          <div className="particle"></div>
+          <div className="particle"></div>
+          <div className="particle"></div>
+          <div className="particle"></div>
+          <div className="particle"></div>
         </div>
-        <div className="floating-elements">
-          <div className="floating-leaf leaf-1"></div>
-          <div className="floating-leaf leaf-2"></div>
-          <div className="floating-leaf leaf-3"></div>
+        
+        <div className={`hero-content ${heroLoaded ? 'loaded' : ''}`}>
+          <div className="hero-badge">
+            <span>Philippine River Conservation</span>
+          </div>
+          <h1 className="hero-title">
+            <div className="reveal-text">Clean Waters,</div>
+            <div className="reveal-text delay-1">Better Future</div>
+            <div className="hero-title-accent reveal-text delay-2">"Alon ng Pagbabago"</div>
+          </h1>
+          <p className="hero-subtitle">Join our mission to restore river health through cleanup operations, 
+            public awareness, and community partnerships.</p>
+          <div className="hero-buttons">
+            <a href="/signup" className="cta-button primary-btn">
+              <span>Get Involved</span>
+              <i className="arrow-icon">→</i>
+            </a>
+            <a href="/about" className="cta-button secondary-btn">
+              <span>Learn More</span>
+            </a>
+          </div>
+          
+          <div className="hero-stats">
+            <div className="hero-stat">
+              <span className="hero-stat-number">12+</span>
+              <span className="hero-stat-label">Rivers</span>
+            </div>
+            <div className="hero-stat">
+              <span className="hero-stat-number">500+</span>
+              <span className="hero-stat-label">Volunteers</span>
+            </div>
+            <div className="hero-stat">
+              <span className="hero-stat-number">5+</span>
+              <span className="hero-stat-label">Communities</span>
+            </div>
+          </div>
         </div>
       </section>
 

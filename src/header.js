@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 function Header(props) {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
   
   // Add scroll event listener
@@ -33,14 +34,24 @@ function Header(props) {
       behavior: 'smooth'
     });
     
+    // Close mobile menu if it's open
+    if (mobileMenuOpen) {
+      setMobileMenuOpen(false);
+    }
+    
     // Then navigate after a short delay to ensure smooth scroll completes
     setTimeout(() => {
       navigate(path);
     }, 300);
   };
+
+  // Toggle mobile menu
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
   
   return (
-    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+    <nav className={`navbar ${scrolled ? 'scrolled' : ''} ${mobileMenuOpen ? 'mobile-open' : ''}`}>
       <div className="navbar-water-drops">
         <div className="navbar-drop"></div>
         <div className="navbar-drop"></div>
@@ -52,7 +63,13 @@ function Header(props) {
         <h1>LinIlog<span>Movement</span></h1>
       </div>
       
-      <ul className="nav-links">
+      <div className="mobile-menu-toggle" onClick={toggleMobileMenu}>
+        <span className={mobileMenuOpen ? 'open' : ''}></span>
+        <span className={mobileMenuOpen ? 'open' : ''}></span>
+        <span className={mobileMenuOpen ? 'open' : ''}></span>
+      </div>
+      
+      <ul className={`nav-links ${mobileMenuOpen ? 'mobile-active' : ''}`}>
         <li>
           <a 
             href="/" 

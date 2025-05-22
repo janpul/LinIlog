@@ -123,17 +123,19 @@ function About(props) {
       </div>
       
       <div className="about-page-content">
-        <div className="about-content-wrapper">
-          {/* Hero Section - styled like the homepage hero */}
-          <section className="about-hero hero">
-            <div className="water-drops">
-              <div className="drop"></div>
-              <div className="drop"></div>
-              <div className="drop"></div>
-            </div>
-            <div className="hero-content">
-              <h1 className="fade-in">Meet Our Developers</h1>
-              <p className="slide-up delay-1">The talented team behind the LinIlog Movement website</p>
+        <div className="hero-particles">
+          <div className="particle"></div>
+          <div className="particle"></div>
+          <div className="particle"></div>
+          <div className="particle"></div>
+          <div className="particle"></div>
+          <div className="particle"></div>
+        </div>
+        <div className="about-content-wrapper">          {/* Simple Hero Section */}
+          <section className="simple-hero">
+            <div className="simple-hero-content">
+              <h1>Meet Our Developers</h1>
+              <p>The talented team behind the LinIlog Movement website</p>
             </div>
           </section>
 

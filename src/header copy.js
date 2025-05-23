@@ -104,7 +104,7 @@ function Header(props) {
             aria-expanded={aboutDropdownOpen}
             style={{ cursor: 'pointer' }}
           >
-            About <span className="dropdown-arrow"> ▼</span>
+            About <span className="dropdown-arrow">▼</span>
           </a>
           {aboutDropdownOpen && (
             <div

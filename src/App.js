@@ -9,6 +9,7 @@ import AdminDashboard from './AdminDashboard';
 import AdminRegister from './AdminRegister';
 import AdminNotFound from './AdminNotFound';
 import NotFound from './NotFound';
+import Cleanups from './cleanups';
 import './App.css';
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
           <Route path="/admin/register" element={<AdminRegister />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
           <Route path="/admin/*" element={<AdminNotFound />} />
+          <Route path="/cleanups" element={<Cleanups />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>

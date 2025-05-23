@@ -185,13 +185,28 @@ function Homepage(props) {
                   </div>
                 </div>
                 <div className="about-image" style={{flex: '1 1 300px', minWidth: 0, display: 'flex', justifyContent: 'center'}}>
-                  <div className="ripple-effect" style={{maxWidth: '340px', width: '100%'}}>
-                    <div className="image-container" style={{borderRadius: '1.5rem', overflow: 'hidden', boxShadow: '0 4px 24px rgba(3,105,161,0.10)'}}>
+                  <div className="ripple-effect" style={{
+                    maxWidth: '340px',
+                    width: '100%',
+                    borderRadius: '50%',
+                    boxShadow: '0 0 24px 4px #38bdf8, 0 0 0 8px #fff'
+                  }}>
+                    <div className="image-container" style={{
+                      borderRadius: '50%',
+                      overflow: 'hidden',
+                      boxShadow: '0 0 0 6px #38bdf8, 0 0 0 12px #fff'
+                    }}>
                       <img 
-                        src="./SanJuanRiver.jpg" 
+                        src="Pasig.jpg" 
                         alt="River cleanup volunteers" 
                         className="about-featured-image"
-                        style={{width: '100%', display: 'block'}}
+                        style={{
+                          width: '100%',
+                          display: 'block',
+                          borderRadius: '50%',
+                          border: '4px solid #38bdf8',
+                          boxShadow: '0 0 0 4px #fff'
+                        }}
                         onError={(e) => {
                           e.target.style.display = 'none';
                         }}

@@ -150,62 +150,126 @@ function Homepage(props) {
         </div>
       </section>
 
-      {/* About Section */}
-      <section id="about" className={`about ${isVisible.about ? 'visible' : ''}`}>
-        <h2>Our Mission</h2>
-        <div className="divider"><div className="water-drop"></div></div>
-        <div className="about-content">
-          <div className="about-text">
-            <p>
-              The LinIlog Movement is an information and advocacy platform that aims to 
-              raise awareness and mobilize support for long-term river cleanup initiatives. 
-              We work to restore river health through organized cleanup operations, raising 
-              public awareness, and partnerships with environmental organizations, 
-              local governments, and individuals.
-            </p>
-          </div>
-          <div className="about-image">
-            <div className="ripple-effect">
-              <div className="image-container">
-                <img 
-                  src="./SanJuanRiver.jpg" 
-                  alt="River cleanup volunteers" 
-                  className="about-featured-image"
-                  onError={(e) => {
-                    // If image fails to load, hide it but keep the ripple effect
-                    e.target.style.display = 'none';
-                  }}
-                />
+            <section id="about" className={`about ${isVisible.about ? 'visible' : ''}`}>
+              <h2>Our Mission</h2>
+              <div className="divider"><div className="water-drop"></div></div>
+              <div className="about-content" style={{display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '2rem'}}>
+                <div className="about-text" style={{flex: '2 1 350px', minWidth: 0}}>
+                  <p style={{fontSize: '1.15rem', fontWeight: 500, color: '#0369a1'}}>
+                    LinIlog is pioneering a new era of river restoration in the Philippines. Our mission: to intercept plastic waste, empower local communities, and create a cleaner, more sustainable future for our waterways.
+                  </p>
+                  <ul style={{margin: '1.2rem 0 1.2rem 1.2rem', color: '#0ea5e9', fontWeight: 500}}>
+                    <li>Innovative river cleanup systems remove plastic before it reaches the sea</li>
+                    <li>Community engagement and education drive lasting change</li>
+                    <li>Partnerships with foundations and local governments amplify our impact</li>
+                  </ul>
+                  <div style={{margin: '1.5rem 0'}}>
+                    <span style={{
+                      display: 'inline-block',
+                      background: 'linear-gradient(90deg, #0ea5e9 60%, #38bdf8 100%)',
+                      color: 'white',
+                      borderRadius: '2rem',
+                      padding: '0.5rem 1.5rem',
+                      fontWeight: 700,
+                      fontSize: '1.1rem',
+                      boxShadow: '0 2px 8px rgba(14,165,233,0.10)'
+                    }}>
+                      Over 2,500 kg of waste collected and counting!
+                    </span>
+                  </div>
+                  <p style={{marginTop: '1rem', color: '#0369a1'}}>
+                    Together, we’re turning the tide on river pollution—one community, one river at a time.
+                  </p>
+                  <div style={{marginTop: '1.5rem'}}>
+                    <a href="/signup" className="cta-button primary-btn" style={{fontSize: '1.1rem', padding: '0.7rem 2rem'}}>Join the Movement</a>
+                  </div>
+                </div>
+                <div className="about-image" style={{flex: '1 1 300px', minWidth: 0, display: 'flex', justifyContent: 'center'}}>
+                  <div className="ripple-effect" style={{maxWidth: '340px', width: '100%'}}>
+                    <div className="image-container" style={{borderRadius: '1.5rem', overflow: 'hidden', boxShadow: '0 4px 24px rgba(3,105,161,0.10)'}}>
+                      <img 
+                        src="./SanJuanRiver.jpg" 
+                        alt="River cleanup volunteers" 
+                        className="about-featured-image"
+                        style={{width: '100%', display: 'block'}}
+                        onError={(e) => {
+                          e.target.style.display = 'none';
+                        }}
+                      />
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
+            </section>
 
       {/* SDGs Section */}
       <section id="sdgs" className={`sdgs ${isVisible.about ? 'visible' : ''}`}>
         <h2>Supporting Sustainable Development Goals</h2>
         <div className="divider"><div className="water-drop"></div></div>
         <div className="sdg-container">
-          <div className="sdg-card">
-            <div className="sdg-icon sdg-6"></div>
-            <h3>SDG 6</h3>
-            <p>Clean Water and Sanitation</p>
+          <div className="sdg-card" style={{background: '#e0f7fa'}}>
+            <img
+              src="/sdg6.png"
+              alt="SDG 6"
+              className="sdg-icon"
+              style={{
+                width: '120px',
+                height: '120px',
+                borderRadius: '24px',
+                objectFit: 'cover',
+                marginBottom: '1.5rem'
+              }}
+            />
+            <h3 style={{ color: '#009de0' }}>SDG 6</h3>
+            <p style={{ color: '#0369a1' }}>Clean Water and Sanitation</p>
           </div>
-          <div className="sdg-card">
-            <div className="sdg-icon sdg-15"></div>
-            <h3>SDG 15</h3>
-            <p>Life on Land</p>
+          <div className="sdg-card" style={{background: '#fff3e0'}}>
+            <img
+              src="/sdg11.png"
+              alt="SDG 11"
+              className="sdg-icon"
+              style={{
+                width: '120px',
+                height: '120px',
+                borderRadius: '24px',
+                objectFit: 'cover',
+                marginBottom: '1.5rem'
+              }}
+            />
+            <h3 style={{ color: '#f9a825' }}>SDG 11</h3>
+            <p style={{ color: '#b45309' }}>Sustainable Cities and Communities</p>
           </div>
-          <div className="sdg-card">
-            <div className="sdg-icon sdg-11"></div>
-            <h3>SDG 11</h3>
-            <p>Sustainable Cities and Communities</p>
+          <div className="sdg-card" style={{background: '#e8f5e9'}}>
+            <img
+              src="/sdg15.png"
+              alt="SDG 15"
+              className="sdg-icon"
+              style={{
+                width: '120px',
+                height: '120px',
+                borderRadius: '24px',
+                objectFit: 'cover',
+                marginBottom: '1.5rem'
+              }}
+            />
+            <h3 style={{ color: '#43a047' }}>SDG 15</h3>
+            <p style={{ color: '#166534' }}>Life on Land</p>
           </div>
-          <div className="sdg-card">
-            <div className="sdg-icon sdg-17"></div>
-            <h3>SDG 17</h3>
-            <p>Partnerships for the Goals</p>
+          <div className="sdg-card" style={{background: '#ede7f6'}}>
+            <img
+              src="/sdg17.png"
+              alt="SDG 17"
+              className="sdg-icon"
+              style={{
+                width: '120px',
+                height: '120px',
+                borderRadius: '24px',
+                objectFit: 'cover',
+                marginBottom: '1.5rem'
+              }}
+            />
+            <h3 style={{ color: '#5e35b1' }}>SDG 17</h3>
+            <p style={{ color: '#3730a3' }}>Partnerships for the Goals</p>
           </div>
         </div>
       </section>

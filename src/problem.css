@@ -1,0 +1,358 @@
+.problem-page {
+  background: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.problem-page-content {
+  flex: 1;
+  margin-top: 70px;
+}
+
+.problem-hero {
+  position: relative;
+  min-height: 55vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #e0f7fa 0%, #bbdefb 100%);
+  overflow: hidden;
+  padding: 3rem 1.5rem 2rem 1.5rem;
+  box-shadow: 0 5px 15px rgba(0, 105, 161, 0.08);
+}
+
+.problem-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.problem-hero h1 {
+  font-size: 3rem;
+  color: #0369a1;
+  margin-bottom: 1rem;
+}
+
+.problem-hero p {
+  font-size: 1.3rem;
+  color: #0c4a6e;
+  margin-top: 1.5rem;
+  line-height: 1.6;
+}
+
+.problem-hero-bg {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: url('../public/Problem-Hero.jpg') center center/cover no-repeat;
+  opacity: 0.18;
+  z-index: 1;
+}
+
+.problem-facts {
+  background: #fff;
+  padding: 5rem 1.5rem 3rem 1.5rem;
+  text-align: center;
+}
+
+.problem-facts-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+  justify-content: center;
+  margin-top: 2.5rem;
+}
+
+.fact-card {
+  background: #f0f9ff;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(3, 105, 161, 0.07);
+  padding: 2rem 1.5rem;
+  width: 270px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.fact-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 16px 32px rgba(3, 105, 161, 0.13);
+}
+
+.fact-card img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 14px;
+  margin-bottom: 1.2rem;
+}
+
+.fact-card h3 {
+  color: #0ea5e9;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.fact-card p {
+  color: #0369a1;
+  font-size: 1.1rem;
+}
+
+.problem-river-bg {
+  background: url('../public/Plastic-River.jpg') center center/cover no-repeat;
+  min-height: 320px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.problem-river-bg::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(3, 105, 161, 0.5); /* Translucent blue overlay */
+  z-index: 1;
+}
+
+.problem-river-bg-overlay {
+  position: relative;
+  z-index: 2; /* Ensure content is above the overlay */
+  background: rgba(3, 105, 161, 0.70);
+  color: #fff;
+  padding: 3rem 2rem;
+  border-radius: 18px;
+  max-width: 700px;
+  margin: 3rem auto;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(3, 105, 161, 0.18);
+}
+
+.problem-river-bg-overlay h2 {
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.problem-impact {
+  background: #f8fafc;
+  padding: 5rem 1.5rem 3rem 1.5rem;
+  text-align: center;
+}
+
+.problem-impact-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+  justify-content: center;
+  margin-top: 2.5rem;
+}
+
+.impact-block {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(3, 105, 161, 0.07);
+  padding: 2rem 1.5rem;
+  width: 340px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.impact-block img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 1.2rem;
+}
+
+.impact-block h3 {
+  color: #0ea5e9;
+  font-size: 1.3rem;
+  margin-bottom: 0.7rem;
+}
+
+.impact-block ul {
+  color: #0369a1;
+  font-size: 1.05rem;
+  padding-left: 1.2rem;
+  margin: 0;
+}
+
+.problem-microplastics-bg {
+  background: url('../public/microplastic.jpg') center center/cover no-repeat;
+  min-height: 350px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.problem-microplastics-bg::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(14, 165, 233, 0.5); /* Translucent blue overlay */
+  z-index: 1;
+}
+
+.problem-microplastics-overlay {
+  position: relative;
+  z-index: 2; /* Ensure content is above the overlay */
+  background: rgba(14, 165, 233, 0.80);
+  color: #fff;
+  padding: 3rem 2rem;
+  border-radius: 18px;
+  max-width: 700px;
+  margin: 3rem auto;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(14, 165, 233, 0.18);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.problem-microplastics-overlay h2 {
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.problem-microplastics-overlay img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 14px;
+  margin-top: 1.5rem;
+  box-shadow: 0 2px 8px rgba(255,255,255,0.13);
+}
+
+.problem-wildlife {
+  background: #fff;
+  padding: 5rem 1.5rem 3rem 1.5rem;
+  text-align: center;
+}
+
+.problem-wildlife-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+  justify-content: center;
+  margin-top: 2.5rem;
+}
+
+.wildlife-card {
+  background: #f0f9ff;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(3, 105, 161, 0.07);
+  padding: 2rem 1.5rem;
+  width: 270px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.wildlife-card img {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 14px;
+  margin-bottom: 1.2rem;
+}
+
+.wildlife-card h3 {
+  color: #0ea5e9;
+  font-size: 1.2rem;
+  margin-bottom: 0.7rem;
+}
+
+.wildlife-card p {
+  color: #0369a1;
+  font-size: 1.05rem;
+}
+
+.problem-cta {
+  background: linear-gradient(135deg, #e0f7fa 0%, #bbdefb 100%);
+  padding: 5rem 1.5rem 3rem 1.5rem;
+  text-align: center;
+}
+
+.problem-cta-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2.5rem;
+}
+
+.problem-cta-grid > div {
+  flex: 1 1 320px;
+  min-width: 280px;
+  text-align: left;
+}
+
+.problem-cta-grid ul {
+  color: #0369a1;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  padding-left: 1.2rem;
+}
+
+.problem-cta-grid img {
+  width: 320px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(14, 165, 233, 0.13);
+}
+
+@media (max-width: 900px) {
+  .problem-facts-grid,
+  .problem-impact-grid,
+  .problem-wildlife-grid,
+  .problem-cta-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+  .impact-block,
+  .fact-card,
+  .wildlife-card {
+    width: 100%;
+    max-width: 400px;
+  }
+  .problem-cta-grid img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .problem-hero h1 {
+    font-size: 2rem;
+  }
+  .problem-hero-content {
+    padding: 0 0.5rem;
+  }
+  .problem-facts,
+  .problem-impact,
+  .problem-wildlife,
+  .problem-cta {
+    padding: 2.5rem 0.5rem;
+  }
+  .problem-river-bg-overlay,
+  .problem-microplastics-overlay {
+    padding: 1.5rem 0.5rem;
+  }
+}

@@ -17,20 +17,24 @@ function Cleanups() {
   const ctaRef = useRef(null);
 
   useEffect(() => {
-    // Reset all animation classes
-    [
-      heroRef,
-      statsRef,
-      recentRef,
-      galleryRef,
-      methodologyRef,
-      impactRef,
-      ctaRef
-    ].forEach(ref => {
-      if (ref.current) {
-        ref.current.classList.remove('visible');
-      }
-    });
+    // Reset all animation classes on every startup
+    const resetAnimations = () => {
+      [
+        heroRef,
+        statsRef,
+        recentRef,
+        galleryRef,
+        methodologyRef,
+        impactRef,
+        ctaRef
+      ].forEach(ref => {
+        if (ref.current) {
+          ref.current.classList.remove('visible');
+        }
+      });
+    };
+
+    resetAnimations();
 
     // Trigger content animation after short delay
     const timer = setTimeout(() => {
@@ -51,23 +55,12 @@ function Cleanups() {
     }, 100);
 
     return () => {
+      // Ensure animations reset when component unmounts
       setContentVisible(false);
       clearTimeout(timer);
-      [
-        heroRef,
-        statsRef,
-        recentRef,
-        galleryRef,
-        methodologyRef,
-        impactRef,
-        ctaRef
-      ].forEach(ref => {
-        if (ref.current) {
-          ref.current.classList.remove('visible');
-        }
-      });
+      resetAnimations();
     };
-  }, []);
+  }, []); // Empty dependency array ensures this runs on every startup
 
   return (
     <div className="cleanups-page">
@@ -330,7 +323,7 @@ function Cleanups() {
           <div className="data-visualization">
             <div className="chart-container">
               <h3>Our Future Initiatives</h3>
-              <ul style={{ textAlign: "left", fontSize: "1.1rem", lineHeight: "2", margin: "0 auto", maxWidth: 400 }}>
+              <ul style={{ listStyleType: "none",  textAlign: "left", fontSize: "1.1rem", lineHeight: "2", margin: "0 auto", maxWidth: 400 }}>
                 <li>🌊 Expand cleanups to 10 new river systems nationwide</li>
                 <li>🤝 Launch partnerships with local schools for youth river stewardship programs</li>
                 <li>📊 Develop a public dashboard for real-time plastic waste tracking</li>

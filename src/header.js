@@ -91,10 +91,19 @@ function Header(props) {
             Home
           </a>
         </li>
+        <li>
+          <a 
+            href="/problem" 
+            className={props.currentPage === 'problem' ? 'active' : ''}
+            onClick={(e) => handleNavigation('/problem', e)}
+          >
+            Plastic Pollution Crisis
+          </a>
+        </li>
         <li style={{ position: "relative" }}>
           <a
             href="/about"
-            className={props.currentPage === 'about' ? 'active' : ''}
+            className={props.currentPage === 'about' || props.currentPage === 'cleanups' ? 'active' : ''}
             ref={aboutNavRef}
             onClick={e => {
               e.preventDefault();
@@ -135,12 +144,15 @@ function Header(props) {
                   width: "100%",
                   fontSize: "1rem",
                   outline: "none",
-                  display: "block"
+                  display: "block",
+                  transition: "background-color 0.3s ease, color 0.3s ease"
                 }}
                 onClick={e => {
                   setAboutDropdownOpen(false);
                   handleNavigation('/about', e);
                 }}
+                onMouseEnter={(e) => e.target.style.backgroundColor = "#c2e0f1"}
+                onMouseLeave={(e) => e.target.style.backgroundColor = "#fff"}
                 type="button"
               >
                 About Us
@@ -159,12 +171,15 @@ function Header(props) {
                   width: "100%",
                   fontSize: "1rem",
                   outline: "none",
-                  display: "block"
+                  display: "block",
+                  transition: "background-color 0.3s ease, color 0.3s ease"
                 }}
                 onClick={e => {
                   setAboutDropdownOpen(false);
                   handleNavigation('/cleanups', e);
                 }}
+                onMouseEnter={(e) => e.target.style.backgroundColor = "#c2e0f1"}
+                onMouseLeave={(e) => e.target.style.backgroundColor = "#fff"}
                 type="button"
               >
                 Clean Ups

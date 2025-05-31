@@ -1,70 +1,68 @@
-# Getting Started with Create React App
+==================================================
+          LinIlog Configuration Guide
+              Prepared by Group 11
+==================================================
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome! This guide will help you set up and run the LinIlog application locally.
 
-## Available Scripts
+--------------------------------------------------
+📦 Prerequisites
+--------------------------------------------------
+- Visual Studio Code
+- Node.js and npm
+- MongoDB (local or cloud)
 
-In the project directory, you can run:
+--------------------------------------------------
+🛠️ Setup Instructions
+--------------------------------------------------
 
-### `npm start`
+1️⃣  Import the Application source code into Visual Studio Code.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+2️⃣  Open a terminal and run:
+    > cd linilog
+    > npm install
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+3️⃣  Set up MongoDB:
+    - Create a database called: linilog
+    - Add two collections (case-sensitive):
+        • admins
+        • signupforms
 
-### `npm test`
+4️⃣  Create a new terminal and navigate to the frontend folder:
+    > cd linilog
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+5️⃣  Open another terminal and navigate to the backend server folder:
+    > cd linilog/server
 
-### `npm run build`
+6️⃣  Start both the frontend and backend:
+    > npm start
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+✅  You have successfully connected the frontend and backend of the LinIlog project!
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+--------------------------------------------------
+🌐 MongoDB Configuration (Deployed Version)
+--------------------------------------------------
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+MongoDB Connection String: mongodb+srv://linilog-admin:i5soS6bvIq8IWGte@linilog-cluster.ticvhip.mongodb.net/?retryWrites=true&w=majority&appName=LinIlog-Cluster
 
-### `npm run eject`
+--------------------------------------------------
+🌐 Deployed Version
+--------------------------------------------------
+Alternatively, access the deployed LinIlog website here:
+🔗 https://linilog.vercel.app
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+--------------------------------------------------
+📁 Folder Structure
+--------------------------------------------------
+linilog/
+├── src/            --> Frontend application
+├── server/         --> Backend server/API
+└── README.txt      --> Configuration instructions
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+--------------------------------------------------
+🧩 Notes
+--------------------------------------------------
+- Ensure MongoDB is running before starting the backend.
+- If issues occur with npm, re-run 'npm install' in the corresponding folders.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Thank you for using LinIlog! 🚀

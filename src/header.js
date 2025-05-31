@@ -69,8 +69,11 @@ function Header(props) {
         <div className="navbar-drop"></div>
         <div className="navbar-drop"></div>
       </div>
-      
-      <div className="logo">
+        <div 
+        className="logo" 
+        onClick={(e) => handleNavigation('/', e)} 
+        style={{ cursor: 'pointer' }}
+      >
         <div className="water-drop"></div>
         <h1>LinIlog<span>Movement</span></h1>
       </div>

@@ -6,14 +6,10 @@ const auth = require('../middleware/auth');
 const Admin = require('../models/Admin');
 const SignupForm = require('../models/SignupForm');
 
-// @route   POST /api/admin/register
-// @desc    Register a new admin
-// @access  Public (ideally should be restricted)
 router.post('/register', async (req, res) => {
   try {
     const { username, password } = req.body;
     
-    // Check if admin already exists
     let admin = await Admin.findOne({ username });
     if (admin) {
       return res.status(400).json({ 
@@ -22,13 +18,11 @@ router.post('/register', async (req, res) => {
       });
     }
     
-    // Create new admin
     admin = new Admin({
       username,
       password
     });
     
-    // Hash password
     const salt = await bcrypt.genSalt(10);
     admin.password = await bcrypt.hash(password, salt);
     
@@ -48,14 +42,10 @@ router.post('/register', async (req, res) => {
   }
 });
 
-// @route   POST /api/admin/login
-// @desc    Authenticate admin & get token
-// @access  Public
 router.post('/login', async (req, res) => {
   try {
     const { username, password } = req.body;
     
-    // Check if admin exists
     const admin = await Admin.findOne({ username });
     if (!admin) {
       return res.status(400).json({ 
@@ -64,7 +54,6 @@ router.post('/login', async (req, res) => {
       });
     }
     
-    // Validate password
     const isMatch = await bcrypt.compare(password, admin.password);
     if (!isMatch) {
       return res.status(400).json({ 
@@ -73,7 +62,6 @@ router.post('/login', async (req, res) => {
       });
     }
     
-    // Generate JWT
     const payload = {
       id: admin._id
     };
@@ -101,9 +89,6 @@ router.post('/login', async (req, res) => {
   }
 });
 
-// @route   GET /api/admin/submissions
-// @desc    Get all signup form submissions
-// @access  Private (admin only)
 router.get('/submissions', auth, async (req, res) => {
   try {
     const submissions = await SignupForm.find().sort({ createdAt: -1 });
@@ -118,6 +103,99 @@ router.get('/submissions', auth, async (req, res) => {
       success: false, 
       message: 'Error fetching submissions', 
       error: error.message 
+    });
+  }
+});
+
+// Get a single submission
+router.get('/submissions/:id', auth, async (req, res) => {
+  try {
+    const submission = await SignupForm.findById(req.params.id);
+    
+    if (!submission) {
+      return res.status(404).json({
+        success: false,
+        message: 'Submission not found'
+      });
+    }
+    
+    res.status(200).json({
+      success: true,
+      submission
+    });
+  } catch (error) {
+    console.error('Error fetching submission:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Error fetching submission',
+      error: error.message
+    });
+  }
+});
+
+// Update submission status
+router.put('/submissions/:id/status', auth, async (req, res) => {
+  try {
+    const { status } = req.body;
+    
+    if (!status || !['pending', 'accepted', 'rejected'].includes(status)) {
+      return res.status(400).json({
+        success: false,
+        message: 'Invalid status value. Must be pending, accepted, or rejected.'
+      });
+    }
+    
+    const submission = await SignupForm.findById(req.params.id);
+    
+    if (!submission) {
+      return res.status(404).json({
+        success: false,
+        message: 'Submission not found'
+      });
+    }
+    
+    submission.status = status;
+    await submission.save();
+    
+    res.status(200).json({
+      success: true,
+      message: `Submission status updated to ${status}`,
+      submission
+    });
+  } catch (error) {
+    console.error('Error updating submission status:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Error updating submission status',
+      error: error.message
+    });
+  }
+});
+
+// Delete submission
+router.delete('/submissions/:id', auth, async (req, res) => {
+  try {
+    const submission = await SignupForm.findById(req.params.id);
+    
+    if (!submission) {
+      return res.status(404).json({
+        success: false,
+        message: 'Submission not found'
+      });
+    }
+    
+    await SignupForm.findByIdAndDelete(req.params.id);
+    
+    res.status(200).json({
+      success: true,
+      message: 'Submission deleted successfully'
+    });
+  } catch (error) {
+    console.error('Error deleting submission:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Error deleting submission',
+      error: error.message
     });
   }
 });

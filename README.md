@@ -1,70 +1,79 @@
-# Getting Started with Create React App
+# LinIlog Movement
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Alon ng Pagbabago**
 
-## Available Scripts
+The LinIlog Movement is an information and advocacy platform dedicated to restoring river health through cleanup operations, public awareness, and community partnerships. The project supports the United Nations Sustainable Development Goals (SDGs) by focusing on clean water, life on land, sustainable communities, and partnerships.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- **Homepage:** Overview of the movement, mission, SDG support, initiatives, and impact statistics.
+- **About Page:** Meet the development team and learn about the project’s background.
+- **Signup Page:** Allows volunteers, donors, and partners to join the movement by submitting their interest.
+- **Admin Portal:**
+  - Admin registration and login
+  - Dashboard to view and manage signup submissions
+  - Secure access with authentication
+- **Impact Tracking:** Displays real-time statistics on volunteers, events, waste collected, and communities impacted.
+- **Modern UI:** Responsive, animated, and visually engaging design.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Tech Stack
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Frontend:** React (Create React App), React Router, CSS
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB (via Mongoose)
+- **Authentication:** JWT-based admin authentication
+- **Deployment:** Vercel (frontend), compatible with cloud MongoDB
 
-### `npm test`
+## Getting Started
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Prerequisites
+- Node.js and npm
+- MongoDB database (local or cloud)
 
-### `npm run build`
+### Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. **Clone the repository:**
+	```sh
+	git clone <repo-url>
+	cd LinIlog
+	```
+2. **Install frontend dependencies:**
+	```sh
+	npm install
+	```
+3. **Install backend dependencies:**
+	```sh
+	cd server
+	npm install
+	```
+4. **Configure environment variables:**
+	- Create a `.env` file in the `server` directory with your MongoDB URI and JWT secret:
+	  ```env
+	  MONGO_URI=your_mongodb_connection_string
+	  JWT_SECRET=your_jwt_secret
+	  ```
+5. **Run the backend server:**
+	```sh
+	npm start
+	```
+6. **Run the frontend app:**
+	```sh
+	cd ..
+	npm start
+	```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The frontend will be available at [http://localhost:3000](http://localhost:3000) and the backend API at [http://localhost:5000](http://localhost:5000).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Usage
 
-### `npm run eject`
+- **Join the Movement:** Go to the Signup page to volunteer, donate, or partner.
+- **Admin Access:** Register or log in as an admin to view and manage submissions.
+- **Explore Impact:** See real-time stats and learn about ongoing initiatives.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Contributing
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Contributions are welcome! Please open an issue or submit a pull request for improvements or bug fixes.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## License
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is open source and available under the [MIT License](LICENSE).

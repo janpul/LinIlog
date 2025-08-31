@@ -16,6 +16,11 @@ const signupFormSchema = new mongoose.Schema({
     enum: ['volunteer', 'donate', 'education', 'partner', 'other']
   },
   message: String,
+  status: {
+    type: String,
+    enum: ['pending', 'accepted', 'rejected'],
+    default: 'pending'
+  },
   createdAt: { 
     type: Date, 
     default: Date.now 

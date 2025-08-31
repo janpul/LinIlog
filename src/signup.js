@@ -120,14 +120,16 @@ function Signup(props) {
       
       <div className="signup-page-content">
         <div className="signup-content-wrapper">
-          {/* Hero Section */}
-          <section className="signup-hero hero">
-            <div className="water-drops">
-              <div className="drop"></div>
-              <div className="drop"></div>
-              <div className="drop"></div>
-            </div>
-            <div className="hero-content">
+          <section className="simple-hero">
+        <div className="hero-particles">
+          <div className="particle"></div>
+          <div className="particle"></div>
+          <div className="particle"></div>
+          <div className="particle"></div>
+          <div className="particle"></div>
+          <div className="particle"></div>
+        </div>
+            <div className="simple-hero-content">
               <h1 className="fade-in">Join The Movement</h1>
               <p className="slide-up delay-1">Be part of the solution for cleaner rivers and a healthier environment</p>
             </div>

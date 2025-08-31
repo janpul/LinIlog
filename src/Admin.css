@@ -386,6 +386,9 @@
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
   margin-top: 1.5rem;
+  position: relative;
+  max-height: 600px;
+  overflow-y: auto;
 }
 
 .admin-table {
@@ -393,7 +396,7 @@
   border-collapse: separate;
   border-spacing: 0;
   background-color: white;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
 }
 
 .admin-table thead tr {
@@ -403,11 +406,12 @@
 }
 
 .admin-table th {
-  padding: 1.2rem 1.5rem;
-  text-align: left;
+  padding: 0.8rem 1rem;
+  text-align: center;
   font-weight: 600;
   position: sticky;
   top: 0;
+  z-index: 10;
 }
 
 .admin-table th:first-child {
@@ -431,7 +435,7 @@
 }
 
 .admin-table td {
-  padding: 1.2rem 1.5rem;
+  padding: 0.7rem 0.9rem;
   border-bottom: 1px solid rgba(189, 195, 199, 0.2);
   vertical-align: middle;
 }
@@ -461,7 +465,7 @@
 }
 
 .admin-table .message-cell {
-  max-width: 300px;
+  max-width: 250px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -474,7 +478,7 @@
 
 .admin-badge {
   display: inline-block;
-  padding: 0.35rem 0.75rem;
+  padding: 0.25rem 0.6rem;
   border-radius: 50px;
   font-size: 0.75rem;
   font-weight: 600;

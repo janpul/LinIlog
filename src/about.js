@@ -123,17 +123,19 @@ function About(props) {
       </div>
       
       <div className="about-page-content">
-        <div className="about-content-wrapper">
-          {/* Hero Section - styled like the homepage hero */}
-          <section className="about-hero hero">
-            <div className="water-drops">
-              <div className="drop"></div>
-              <div className="drop"></div>
-              <div className="drop"></div>
-            </div>
-            <div className="hero-content">
-              <h1 className="fade-in">Meet Our Developers</h1>
-              <p className="slide-up delay-1">The talented team behind the LinIlog Movement website</p>
+        <div className="hero-particles">
+          <div className="particle"></div>
+          <div className="particle"></div>
+          <div className="particle"></div>
+          <div className="particle"></div>
+          <div className="particle"></div>
+          <div className="particle"></div>
+        </div>
+        <div className="about-content-wrapper">          {/* Simple Hero Section */}
+          <section className="simple-hero">
+            <div className="simple-hero-content">
+              <h1>Meet Our Developers</h1>
+              <p>The talented team behind the LinIlog Movement website</p>
             </div>
           </section>
 
@@ -160,10 +162,10 @@ function About(props) {
                   />
                 </div>
                 <h3>Jason Wendell Agilada</h3>
-                <p className="member-title">System Architecture Expert</p>
+                <p className="member-title">Documentation Specialist</p>
                 <p className="member-bio">
-                  Handles server-side logic, database management, and API integration.
-                  Ensures the website performs efficiently and securely.
+                  Oversees the creation and maintenance of technical documentation.
+                  Ensures all project details are accurately recorded and accessible.
                 </p>
               </div>
 
@@ -184,10 +186,10 @@ function About(props) {
                   />
                 </div>
                 <h3>Jan Adrian Sideño</h3>
-                <p className="member-title">Creative Director</p>
+                <p className="member-title">Frontend Developer</p>
                 <p className="member-bio">
-                  Designs intuitive and visually appealing interfaces for the website.
-                  Passionate about creating engaging digital experiences that inspire action.
+                  Specializes in building responsive and interactive user interfaces.
+                  Ensures the website is visually appealing and user-friendly.
                 </p>
               </div>
 
@@ -208,10 +210,10 @@ function About(props) {
                   />
                 </div>
                 <h3>John Paul Taruc</h3>
-                <p className="member-title">Frontend & UX Specialist</p>
+                <p className="member-title">Backend Developer</p>
                 <p className="member-bio">
-                  Responsible for creating the user interface and ensuring a seamless user experience.
-                  Specializes in responsive design and interactive elements.
+                  Focuses on server-side logic, database management, and API development.
+                  Ensures the website's backend is robust, secure, and scalable.
                 </p>
               </div>
             </div>

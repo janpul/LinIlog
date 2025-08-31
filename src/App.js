@@ -9,6 +9,8 @@ import AdminDashboard from './AdminDashboard';
 import AdminRegister from './AdminRegister';
 import AdminNotFound from './AdminNotFound';
 import NotFound from './NotFound';
+import Cleanups from './cleanups';
+import Problem from './problem'; // Add this import
 import './App.css';
 
 function App() {
@@ -30,6 +32,8 @@ function App() {
           <Route path="/admin/register" element={<AdminRegister />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
           <Route path="/admin/*" element={<AdminNotFound />} />
+          <Route path="/cleanups" element={<Cleanups />} />
+          <Route path="/problem" element={<Problem />} /> {/* Add this route */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>

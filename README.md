@@ -1,68 +1,79 @@
-==================================================
-          LinIlog Configuration Guide
-              Prepared by Group 11
-==================================================
+# LinIlog Movement
 
-Welcome! This guide will help you set up and run the LinIlog application locally.
+**Alon ng Pagbabago**
 
---------------------------------------------------
-📦 Prerequisites
---------------------------------------------------
-- Visual Studio Code
+The LinIlog Movement is an information and advocacy platform dedicated to restoring river health through cleanup operations, public awareness, and community partnerships. The project supports the United Nations Sustainable Development Goals (SDGs) by focusing on clean water, life on land, sustainable communities, and partnerships.
+
+## Features
+
+- **Homepage:** Overview of the movement, mission, SDG support, initiatives, and impact statistics.
+- **About Page:** Meet the development team and learn about the project’s background.
+- **Signup Page:** Allows volunteers, donors, and partners to join the movement by submitting their interest.
+- **Admin Portal:**
+  - Admin registration and login
+  - Dashboard to view and manage signup submissions
+  - Secure access with authentication
+- **Impact Tracking:** Displays real-time statistics on volunteers, events, waste collected, and communities impacted.
+- **Modern UI:** Responsive, animated, and visually engaging design.
+
+## Tech Stack
+
+- **Frontend:** React (Create React App), React Router, CSS
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB (via Mongoose)
+- **Authentication:** JWT-based admin authentication
+- **Deployment:** Vercel (frontend), compatible with cloud MongoDB
+
+## Getting Started
+
+### Prerequisites
 - Node.js and npm
-- MongoDB (local or cloud)
+- MongoDB database (local or cloud)
 
---------------------------------------------------
-🛠️ Setup Instructions
---------------------------------------------------
+### Installation
 
-1️⃣  Import the Application source code into Visual Studio Code.
+1. **Clone the repository:**
+	```sh
+	git clone <repo-url>
+	cd LinIlog
+	```
+2. **Install frontend dependencies:**
+	```sh
+	npm install
+	```
+3. **Install backend dependencies:**
+	```sh
+	cd server
+	npm install
+	```
+4. **Configure environment variables:**
+	- Create a `.env` file in the `server` directory with your MongoDB URI and JWT secret:
+	  ```env
+	  MONGO_URI=your_mongodb_connection_string
+	  JWT_SECRET=your_jwt_secret
+	  ```
+5. **Run the backend server:**
+	```sh
+	npm start
+	```
+6. **Run the frontend app:**
+	```sh
+	cd ..
+	npm start
+	```
 
-2️⃣  Open a terminal and run:
-    > cd linilog
-    > npm install
+The frontend will be available at [http://localhost:3000](http://localhost:3000) and the backend API at [http://localhost:5000](http://localhost:5000).
 
-3️⃣  Set up MongoDB:
-    - Create a database called: linilog
-    - Add two collections (case-sensitive):
-        • admins
-        • signupforms
+## Usage
 
-4️⃣  Create a new terminal and navigate to the frontend folder:
-    > cd linilog
+- **Join the Movement:** Go to the Signup page to volunteer, donate, or partner.
+- **Admin Access:** Register or log in as an admin to view and manage submissions.
+- **Explore Impact:** See real-time stats and learn about ongoing initiatives.
 
-5️⃣  Open another terminal and navigate to the backend server folder:
-    > cd linilog/server
+## Contributing
 
-6️⃣  Start both the frontend and backend:
-    > npm start
+Contributions are welcome! Please open an issue or submit a pull request for improvements or bug fixes.
 
-✅  You have successfully connected the frontend and backend of the LinIlog project!
+## License
 
---------------------------------------------------
-🌐 MongoDB Configuration (Deployed Version)
---------------------------------------------------
-
-MongoDB Connection String: mongodb+srv://linilog-admin:i5soS6bvIq8IWGte@linilog-cluster.ticvhip.mongodb.net/?retryWrites=true&w=majority&appName=LinIlog-Cluster
-
---------------------------------------------------
-🌐 Deployed Version
---------------------------------------------------
-Alternatively, access the deployed LinIlog website here:
-🔗 https://linilog.vercel.app
-
---------------------------------------------------
-📁 Folder Structure
---------------------------------------------------
-linilog/
-├── src/            --> Frontend application
-├── server/         --> Backend server/API
-└── README.txt      --> Configuration instructions
-
---------------------------------------------------
-🧩 Notes
---------------------------------------------------
-- Ensure MongoDB is running before starting the backend.
-- If issues occur with npm, re-run 'npm install' in the corresponding folders.
-
-Thank you for using LinIlog! 🚀
+This project is open source and available under the [MIT License](LICENSE).
